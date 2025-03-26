@@ -1,12 +1,12 @@
 <?php
 
-namespace :namespace_vendor\:namespace_tool_name;
+namespace Opscale\NovaAuth0;
 
-use Laravel\Nova\Events\ServingNova;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use :namespace_vendor\:namespace_tool_name\Http\Middleware\Authorize;
+use Laravel\Nova\Events\ServingNova;
 use Laravel\Nova\Nova;
+use Opscale\NovaAuth0\Http\Middleware\Authorize;
 
 class ToolServiceProvider extends ServiceProvider
 {
@@ -19,7 +19,7 @@ class ToolServiceProvider extends ServiceProvider
             $this->loadCommands();
             $this->loadMigrations();
         }
-            
+
         Nova::serving(function (ServingNova $event) {
             $this->loadResources();
         });*/
@@ -42,13 +42,13 @@ class ToolServiceProvider extends ServiceProvider
         }
 
         Route::middleware(['nova', Authorize::class])
-                ->prefix('nova-vendor/:vendor/:package_name')
+                ->prefix('nova-vendor/opscale-co/nova-auth0')
                 ->group(__DIR__.'/../routes/api.php');
     }
-                
+
     protected function loadConfigs()
     {
-        $filename = ':package_name.php';
+        $filename = 'nova-auth0.php';
         $this->publishes([
             __DIR__."/../config/$filename" => config_path($filename),
         ]);

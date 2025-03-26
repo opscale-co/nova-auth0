@@ -1,10 +1,10 @@
 <?php
 
-namespace :namespace_vendor\:namespace_tool_name\Tests;
+namespace Opscale\NovaAuth0\Tests;
 
 use Illuminate\Support\Facades\Route;
+use Opscale\NovaAuth0\ToolServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use :namespace_vendor\:namespace_tool_name\ToolServiceProvider;
 
 abstract class TestCase extends Orchestra
 {
